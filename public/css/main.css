@@ -1,0 +1,108 @@
+/* =========================
+   Base Reset & Typography
+   ========================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f8; /* soft light gray */
+    color: #2f3e46; /* dark muted text */
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* =========================
+   Headings
+   ========================= */
+h1 {
+    text-align: center;
+    color: #3a5a78; /* calm blue */
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #4f6d7a; /* softer blue-gray */
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-left: 5px solid #9cc5a1; /* soft green accent */
+    padding-left: 10px;
+}
+
+/* =========================
+   Navigation
+   ========================= */
+nav {
+    background-color: #e8f1f2; /* soft blue background */
+    border-radius: 8px;
+    margin-bottom: 30px;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #3a5a78;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background-color: #9cc5a1; /* soft green */
+    color: #ffffff;
+}
+
+/* =========================
+   Paragraphs & Lists
+   ========================= */
+p {
+    margin-bottom: 12px;
+}
+
+ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+/* =========================
+   Images
+   ========================= */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================
+   Responsive Tweaks
+   ========================= */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    body {
+        padding: 15px;
+    }
+}
