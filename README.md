@@ -2,6 +2,8 @@
 
 Practice project for CSE 340
 
+
+
 My-project/
 ├── public/
 │   ├── css/
