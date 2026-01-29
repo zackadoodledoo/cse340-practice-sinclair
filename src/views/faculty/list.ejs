@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .faculty-card {
+            background-color: #ffffff;
+            border: 1px solid #d0d8db;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .faculty-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .faculty-card h3 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+            color: #3a5a78;
+        }
+
+        .faculty-card a {
+            color: #3a5a78;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .faculty-card a:hover {
+            color: #9cc5a1;
+        }
+
+        .faculty-info {
+            font-size: 0.95em;
+            color: #555;
+            margin: 8px 0;
+        }
+
+        .faculty-info strong {
+            color: #2f3e46;
+        }
+
+        .sort-options {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .sort-button {
+            padding: 8px 16px;
+            background-color: #e8f1f2;
+            border: 1px solid #9cc5a1;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #3a5a78;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sort-button.active {
+            background-color: #9cc5a1;
+            color: #ffffff;
+        }
+
+        .sort-button:hover {
+            background-color: #9cc5a1;
+            color: #ffffff;
+        }
+
+        @media (max-width: 600px) {
+            .faculty-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sort-options {
+                flex-direction: column;
+            }
+
+            .sort-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1><%= title %></h1>
+    
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/faculty">Faculty Directory</a></li>
+        </ul>
+    </nav>
+
+    <div class="sort-options">
+        <a href="/faculty?sort=name" class="sort-button <%= currentSort === 'name' ? 'active' : '' %>">Sort by Name</a>
+        <a href="/faculty?sort=department" class="sort-button <%= currentSort === 'department' ? 'active' : '' %>">Sort by Department</a>
+        <a href="/faculty?sort=title" class="sort-button <%= currentSort === 'title' ? 'active' : '' %>">Sort by Title</a>
+    </div>
+
+    <div class="faculty-grid">
+        <% if (faculty && faculty.length > 0) { %>
+            <% faculty.forEach(member => { %>
+                <div class="faculty-card">
+                    <h3><a href="/faculty/<%= member.id %>"><%= member.name %></a></h3>
+                    <div class="faculty-info">
+                        <strong>Department:</strong> <%= member.department %>
+                    </div>
+                    <div class="faculty-info">
+                        <strong>Title:</strong> <%= member.title %>
+                    </div>
+                    <div class="faculty-info">
+                        <strong>Office:</strong> <%= member.office %>
+                    </div>
+                    <div class="faculty-info">
+                        <strong>Email:</strong> <a href="mailto:<%= member.email %>"><%= member.email %></a>
+                    </div>
+                    <div class="faculty-info">
+                        <strong>Phone:</strong> <a href="tel:<%= member.phone %>"><%= member.phone %></a>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No faculty members found.</p>
+        <% } %>
+    </div>
+</body>
+</html>

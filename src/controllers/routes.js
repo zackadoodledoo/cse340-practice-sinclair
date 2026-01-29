@@ -1,4 +1,5 @@
 import express from 'express';
+import { facultyListPage, facultyDetailPage } from './faculty/faculty.js';
 
 const router = express.Router();
 
@@ -20,5 +21,9 @@ router.get('/about', (req, res) => {
 router.get('/products', (req, res) => {
   res.render('products');
 });
+
+// Faculty routes
+router.get('/faculty', facultyListPage);
+router.get('/faculty/:facultyId', facultyDetailPage);
 
 export default router;
