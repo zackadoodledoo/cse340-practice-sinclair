@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        .error-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .error-code {
+            font-size: 4em;
+            color: #c84c3c;
+            margin: 20px 0;
+        }
+        .error-message {
+            font-size: 1.5em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .error-details {
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .back-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #9cc5a1;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .back-home:hover {
+            background-color: #7aa987;
+        }
+    </style>
+</head>
+<body>
+    <h1><%= title %></h1>
+    
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/faculty">Faculty Directory</a></li>
+        </ul>
+    </nav>
+
+    <div class="error-container">
+        <div class="error-code">500</div>
+        <div class="error-message"><%= error %></div>
+        <p>An unexpected error occurred. Please try again later.</p>
+        <% if (stack && NODE_ENV !== 'production') { %>
+            <div class="error-details">
+                <strong>Error Stack:</strong>
+                <pre><%= stack %></pre>
+            </div>
+        <% } %>
+        <a href="/" class="back-home">← Back to Home</a>
+    </div>
+</body>
+</html>
